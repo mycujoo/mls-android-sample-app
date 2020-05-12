@@ -1,7 +1,7 @@
 package tv.mycujoo.mlssampleapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class VideoActivity : AppCompatActivity() {
 
