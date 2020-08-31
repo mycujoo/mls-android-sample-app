@@ -1,6 +1,6 @@
 
 
-## This sample app demonstrates how to use MLS in Android platform MLS-android[https://github.com/mycujoo/mls-android]
+# This sample app demonstrates how to use MLS in Android platform MLS-android [https://github.com/mycujoo/mls-android]
 
 ### Overview
 MLS Android SDK enables apps to play videos that are hosted on MyCujoo Live Service platform while making displaying of annotations possible. MLS will handle all possible features an app needs to broadcast an event. From retrieving events list to displaying the video itself & annotations on it.
