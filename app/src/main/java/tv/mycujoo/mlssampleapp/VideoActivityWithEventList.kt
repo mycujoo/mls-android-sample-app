@@ -13,7 +13,7 @@ import tv.mycujoo.mls.api.MLSBuilder
 import tv.mycujoo.mls.api.MLSConfiguration
 import tv.mycujoo.mls.api.PlayerEventsListener
 import tv.mycujoo.mls.core.UIEventListener
-import tv.mycujoo.mls.widgets.PlayerViewWrapper
+import tv.mycujoo.mls.widgets.MLSPlayerView
 
 class VideoActivityWithEventList : AppCompatActivity() {
 
@@ -56,27 +56,24 @@ class VideoActivityWithEventList : AppCompatActivity() {
 
         val dataProvider = MLS.getDataProvider()
         testPlayButton.setOnClickListener {
-            dataProvider.fetchEvents(10, fetchEventCallback = { eventFetched(it) })
+            dataProvider.fetchEvents(
+                10,
+                fetchEventCallback = { eventList: List<EventEntity>, previousPageToken: String, nextPageToken: String ->
+                    MLS.getVideoPlayer().playVideo(eventList.first())
+                })
         }
 
-
-    }
-
-    private fun eventFetched(list: List<EventEntity>) {
-        list.firstOrNull { it.streams.isNotEmpty() }?.let { eventEntity ->
-            MLS.getVideoPlayer().playVideo(eventEntity) // or eventEntity.id
-        }
 
     }
 
     override fun onStart() {
         super.onStart()
-        MLS.onStart(playerViewWrapper)
+        MLS.onStart(playerView)
     }
 
     override fun onResume() {
         super.onResume()
-        MLS.onResume(playerViewWrapper)
+        MLS.onResume(playerView)
     }
 
     override fun onPause() {
@@ -92,9 +89,9 @@ class VideoActivityWithEventList : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         if (isFullScreen) {
-            playerViewWrapper.screenMode(PlayerViewWrapper.ScreenMode.Landscape(PlayerViewWrapper.RESIZE_MODE_FILL))
+            playerView.screenMode(MLSPlayerView.ScreenMode.Landscape(MLSPlayerView.RESIZE_MODE_FILL))
         } else {
-            playerViewWrapper.screenMode(PlayerViewWrapper.ScreenMode.Portrait(PlayerViewWrapper.RESIZE_MODE_FIT))
+            playerView.screenMode(MLSPlayerView.ScreenMode.Portrait(MLSPlayerView.RESIZE_MODE_FIT))
         }
     }
 }

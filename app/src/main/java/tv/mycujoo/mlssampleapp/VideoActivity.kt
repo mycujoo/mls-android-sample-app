@@ -7,13 +7,17 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_video.*
+import tv.mycujoo.domain.entity.EventEntity
 import tv.mycujoo.mls.api.MLS
 import tv.mycujoo.mls.api.MLSBuilder
 import tv.mycujoo.mls.api.MLSConfiguration
 import tv.mycujoo.mls.api.PlayerEventsListener
 import tv.mycujoo.mls.core.UIEventListener
-import tv.mycujoo.mls.widgets.PlayerViewWrapper
+import tv.mycujoo.mls.widgets.MLSPlayerView
 
+/**
+ * This sample shows how to display an Event by using the event's id.
+ */
 class VideoActivity : AppCompatActivity() {
 
     lateinit var MLS: MLS
@@ -46,32 +50,38 @@ class VideoActivity : AppCompatActivity() {
             }
         }
 
-        MLS = MLSBuilder().publicKey("3HFCBP4EQJME2EH8H0SBH9RCST0IR269")
+        // create MLS component
+        MLS = MLSBuilder().publicKey("YOUR_PUBLIC_KEY_HERE")
             .withActivity(this)
             .setPlayerEventsListener(playerEventsListener)
             .setUIEventListener(uiEventListener)
             .setConfiguration(MLSConfiguration())
             .build()
 
-
+        // use VideoPlayer to play video
+        val videoPlayer = MLS.getVideoPlayer()
         testPlayButton.setOnClickListener {
-            MLS.getVideoPlayer().playVideo("1g52suLu2ktx4Rvwt0WnCke0d9a")
+            videoPlayer.playVideo("1g52suLu2ktx4Rvwt0WnCke0d9a")
         }
 
-
+        // use Data-Provider to fetch events
         val dataProvider = MLS.getDataProvider()
-        dataProvider.fetchEvents(10, fetchEventCallback = { Log.i("VideoActivity", it.toString()) })
+        dataProvider.fetchEvents(
+            10,
+            fetchEventCallback = { eventList: List<EventEntity>, previousPageToken: String, nextPageToken: String ->
+                MLS.getVideoPlayer().playVideo(eventList.first())
+            })
 
     }
 
     override fun onStart() {
         super.onStart()
-        MLS.onStart(playerViewWrapper)
+        MLS.onStart(playerView)
     }
 
     override fun onResume() {
         super.onResume()
-        MLS.onResume(playerViewWrapper)
+        MLS.onResume(playerView)
     }
 
     override fun onPause() {
@@ -86,10 +96,11 @@ class VideoActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+        // change view display mode
         if (isFullScreen) {
-            playerViewWrapper.screenMode(PlayerViewWrapper.ScreenMode.Landscape(PlayerViewWrapper.RESIZE_MODE_FILL))
+            playerView.screenMode(MLSPlayerView.ScreenMode.Landscape(MLSPlayerView.RESIZE_MODE_FILL))
         } else {
-            playerViewWrapper.screenMode(PlayerViewWrapper.ScreenMode.Portrait(PlayerViewWrapper.RESIZE_MODE_FIT))
+            playerView.screenMode(MLSPlayerView.ScreenMode.Portrait(MLSPlayerView.RESIZE_MODE_FIT))
         }
     }
 }
