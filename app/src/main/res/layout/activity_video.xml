@@ -18,7 +18,7 @@
         tools:layout_height="240dp" />
 
     <Button
-        android:id="@+id/testPlayButton"
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play"

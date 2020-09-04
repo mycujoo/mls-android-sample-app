@@ -60,8 +60,8 @@ class VideoActivity : AppCompatActivity() {
 
         // use VideoPlayer to play video
         val videoPlayer = MLS.getVideoPlayer()
-        testPlayButton.setOnClickListener {
-            videoPlayer.playVideo("1g52suLu2ktx4Rvwt0WnCke0d9a")
+        playButton.setOnClickListener {
+            videoPlayer.playVideo("EVENT_ID_HERE")
         }
 
         // use Data-Provider to fetch events

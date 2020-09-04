@@ -47,7 +47,7 @@ class VideoActivityWithEventList : AppCompatActivity() {
             }
         }
 
-        MLS = MLSBuilder().publicKey("3HFCBP4EQJME2EH8H0SBH9RCST0IR269")
+        MLS = MLSBuilder().publicKey("YOUR_PUBLIC_KEY_HERE")
             .withActivity(this)
             .setPlayerEventsListener(playerEventsListener)
             .setUIEventListener(uiEventListener)
@@ -55,7 +55,7 @@ class VideoActivityWithEventList : AppCompatActivity() {
             .build()
 
         val dataProvider = MLS.getDataProvider()
-        testPlayButton.setOnClickListener {
+        playButton.setOnClickListener {
             dataProvider.fetchEvents(
                 10,
                 fetchEventCallback = { eventList: List<EventEntity>, previousPageToken: String, nextPageToken: String ->
