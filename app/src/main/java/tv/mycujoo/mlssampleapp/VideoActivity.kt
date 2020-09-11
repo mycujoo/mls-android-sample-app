@@ -69,7 +69,7 @@ class VideoActivity : AppCompatActivity() {
         dataProvider.fetchEvents(
             10,
             fetchEventCallback = { eventList: List<EventEntity>, previousPageToken: String, nextPageToken: String ->
-                MLS.getVideoPlayer().playVideo(eventList.first())
+                // eventList contains all events that matches search criteria
             })
 
     }
