@@ -59,9 +59,8 @@ class VideoActivity : AppCompatActivity() {
             .build()
 
         // use VideoPlayer to play video
-        val videoPlayer = MLS.getVideoPlayer()
         playButton.setOnClickListener {
-            videoPlayer.playVideo("EVENT_ID_HERE")
+            MLS.getVideoPlayer().playVideo("EVENT_ID_HERE")
         }
 
         // use Data-Provider to fetch events
@@ -73,6 +72,8 @@ class VideoActivity : AppCompatActivity() {
             })
 
     }
+
+
 
     override fun onStart() {
         super.onStart()
