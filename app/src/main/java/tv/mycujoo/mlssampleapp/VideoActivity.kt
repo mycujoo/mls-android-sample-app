@@ -13,6 +13,7 @@ import tv.mycujoo.mls.api.MLSBuilder
 import tv.mycujoo.mls.api.MLSConfiguration
 import tv.mycujoo.mls.api.PlayerEventsListener
 import tv.mycujoo.mls.core.UIEventListener
+import tv.mycujoo.mls.entity.msc.VideoPlayerConfig
 import tv.mycujoo.mls.widgets.MLSPlayerView
 
 /**
@@ -50,12 +51,24 @@ class VideoActivity : AppCompatActivity() {
             }
         }
 
+        // Customize configuration, or use default values
+        val videoPlayerConfig = VideoPlayerConfig(
+            primaryColor = "#FFFF00",
+            secondaryColor = "#32CD32",
+            autoPlay = true,
+            showBackForwardsButtons = true,
+            showEventInfoButton = true,
+            showLiveViewers = true
+        )
+        val mlsConfiguration =
+            MLSConfiguration(seekTolerance = 1000L, videoPlayerConfig = videoPlayerConfig)
+
         // create MLS component
         MLS = MLSBuilder().publicKey("YOUR_PUBLIC_KEY_HERE")
             .withActivity(this)
             .setPlayerEventsListener(playerEventsListener)
             .setUIEventListener(uiEventListener)
-            .setConfiguration(MLSConfiguration())
+            .setConfiguration(mlsConfiguration) // customize MLSConfiguration by providing
             .build()
 
         // use VideoPlayer to play video
@@ -72,7 +85,6 @@ class VideoActivity : AppCompatActivity() {
             })
 
     }
-
 
 
     override fun onStart() {
