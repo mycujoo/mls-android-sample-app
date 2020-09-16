@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import kotlinx.android.synthetic.main.activity_video.*
 import tv.mycujoo.domain.entity.EventEntity
 import tv.mycujoo.mls.api.MLS
@@ -27,6 +28,8 @@ class VideoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
+
+        constraintMLSPlayerView(resources.configuration.orientation)
 
         val playerEventsListener = object : PlayerEventsListener {
 
@@ -89,12 +92,12 @@ class VideoActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        MLS.onStart(playerView)
+        MLS.onStart(mlsPlayerView)
     }
 
     override fun onResume() {
         super.onResume()
-        MLS.onResume(playerView)
+        MLS.onResume(mlsPlayerView)
     }
 
     override fun onPause() {
@@ -109,11 +112,34 @@ class VideoActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        // change view display mode
-        if (isFullScreen) {
-            playerView.screenMode(MLSPlayerView.ScreenMode.Landscape(MLSPlayerView.RESIZE_MODE_FILL))
-        } else {
-            playerView.screenMode(MLSPlayerView.ScreenMode.Portrait(MLSPlayerView.RESIZE_MODE_FIT))
+        constraintMLSPlayerView(newConfig.orientation)
+    }
+
+    private fun constraintMLSPlayerView(orientation: Int) {
+        // constraint MLSVideoPlayer view based on device orientation
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            val constraintSet = ConstraintSet()
+            constraintSet.clone(mainActivityRootLayout)
+            constraintSet.constrainWidth(mlsPlayerView.id, ConstraintSet.MATCH_CONSTRAINT_SPREAD)
+            constraintSet.constrainHeight(mlsPlayerView.id, 800)
+
+            constraintSet.applyTo(mainActivityRootLayout)
+
+
+            mlsPlayerView.setScreenResizeMode(resizeMode = MLSPlayerView.ResizeMode.RESIZE_MODE_FIXED_HEIGHT)
+            mlsPlayerView.setFullscreen(isFullscreen = true)
+        } else if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            val constraintSet = ConstraintSet()
+            constraintSet.clone(mainActivityRootLayout)
+            constraintSet.constrainWidth(mlsPlayerView.id, ConstraintSet.MATCH_CONSTRAINT_SPREAD)
+            constraintSet.constrainHeight(mlsPlayerView.id, 800)
+
+            constraintSet.applyTo(mainActivityRootLayout)
+
+
+            mlsPlayerView.setScreenResizeMode(resizeMode = MLSPlayerView.ResizeMode.RESIZE_MODE_FIT)
+            mlsPlayerView.setFullscreen(isFullscreen = false)
         }
     }
+
 }
