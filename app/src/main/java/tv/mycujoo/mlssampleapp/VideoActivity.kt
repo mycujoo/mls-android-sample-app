@@ -55,7 +55,7 @@ class VideoActivity : AppCompatActivity() {
         val videoPlayerConfig = VideoPlayerConfig(
             primaryColor = "#FFFF00",
             secondaryColor = "#32CD32",
-            autoPlay = true,
+            autoPlay = false,
             showBackForwardsButtons = true,
             showEventInfoButton = true,
             showLiveViewers = true
