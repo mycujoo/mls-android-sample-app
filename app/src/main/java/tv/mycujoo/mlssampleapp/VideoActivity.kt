@@ -29,6 +29,7 @@ class VideoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
 
+        // apply constraint to MLSPlayerView
         constraintMLSPlayerView(resources.configuration.orientation)
 
         val playerEventsListener = object : PlayerEventsListener {
