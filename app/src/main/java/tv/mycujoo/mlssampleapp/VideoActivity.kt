@@ -61,6 +61,9 @@ class VideoActivity : AppCompatActivity() {
             secondaryColor = "#32CD32",
             autoPlay = false,
             showBackForwardsButtons = true,
+            showSeekBar = true,
+            showTimers = true,
+            showFullScreenButton = false,
             showEventInfoButton = true,
             showLiveViewers = true
         )
