@@ -60,6 +60,8 @@ class VideoActivity : AppCompatActivity() {
             primaryColor = "#FFFF00",
             secondaryColor = "#32CD32",
             autoPlay = false,
+            enableControls = true,
+            showPlayPauseButtons = true,
             showBackForwardsButtons = true,
             showSeekBar = true,
             showTimers = true,
