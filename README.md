@@ -4,6 +4,11 @@
 
 [ ![Download](https://api.bintray.com/packages/mycujoo/mls/tv.mycujoo.mls/images/download.svg) ](https://bintray.com/mycujoo/mls/tv.mycujoo.mls/_latestVersion)
 
+## MLS Android - Sample apps
+### Branches
+* **master** branch demonstrates app usage
+* **tv** branch includes Android TV sample app
+
 Example 1: Getting Event & show video by event id: 
 [VideoActivity](app/src/main/java/tv/mycujoo/mlssampleapp/VideoActivity.kt)
 
