@@ -66,8 +66,8 @@ class VideoActivity : AppCompatActivity() {
             showSeekBar = true,
             showTimers = true,
             showFullScreenButton = false,
-            showEventInfoButton = true,
-            showLiveViewers = true
+            showLiveViewers = true,
+            showEventInfoButton = true
         )
         val mlsConfiguration =
             MLSConfiguration(seekTolerance = 1000L, videoPlayerConfig = videoPlayerConfig)
