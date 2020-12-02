@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:playerViewWrapper="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/mainActivityRootLayout"
+    tools:context=".VideoActivity">
 
-    <Button
-        android:id="@+id/withEventIdButton"
-        android:layout_width="wrap_content"
+    <tv.mycujoo.mls.widgets.MLSPlayerView
+        android:id="@+id/mlsPlayerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Video Activity With Event Id"
-        app:layout_constraintBottom_toTopOf="@id/withEventListButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        playerViewWrapper:has_fullscreen_button="true"
+        tools:layout_height="240dp" />
 
     <Button
-        android:id="@+id/withEventListButton"
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Video Activity With Event list"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/withEventIdButton"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@id/mlsPlayerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
