@@ -7,27 +7,31 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
-import kotlinx.android.synthetic.main.activity_video.*
+import kotlinx.android.synthetic.main.activity_video.mainActivityRootLayout
+import kotlinx.android.synthetic.main.activity_video.mlsPlayerView
+import kotlinx.android.synthetic.main.activity_video.playButton
+import kotlinx.android.synthetic.main.activity_video_with_cast.*
 import tv.mycujoo.domain.entity.EventEntity
 import tv.mycujoo.mls.api.MLS
 import tv.mycujoo.mls.api.MLSBuilder
 import tv.mycujoo.mls.api.MLSConfiguration
 import tv.mycujoo.mls.api.PlayerEventsListener
+import tv.mycujoo.mls.caster.Caster
 import tv.mycujoo.mls.core.UIEventListener
 import tv.mycujoo.mls.entity.msc.VideoPlayerConfig
 import tv.mycujoo.mls.widgets.MLSPlayerView
 
 /**
- * This sample shows how to display an Event by using the event's id.
+ * This sample shows how to use Caster module to support Google Cast feature.
  */
-class VideoActivity : AppCompatActivity() {
+class VideoActivityWithCaster : AppCompatActivity() {
 
     lateinit var MLS: MLS
     var isFullScreen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_video)
+        setContentView(R.layout.activity_video_with_cast)
 
         // apply constraint to MLSPlayerView
         constraintMLSPlayerView(resources.configuration.orientation)
@@ -68,7 +72,7 @@ class VideoActivity : AppCompatActivity() {
             showFullScreenButton = false,
             showLiveViewers = true,
             showEventInfoButton = true,
-            showCastButton = false
+            showCastButton = true
         )
         val mlsConfiguration =
             MLSConfiguration(seekTolerance = 1000L, videoPlayerConfig = videoPlayerConfig)
@@ -79,6 +83,7 @@ class VideoActivity : AppCompatActivity() {
             .setPlayerEventsListener(playerEventsListener)
             .setUIEventListener(uiEventListener)
             .setConfiguration(mlsConfiguration) // customize MLSConfiguration by providing
+            .setCaster(Caster(miniControllerPlaceHolder))
             .build()
 
         // use VideoPlayer to play video
