@@ -14,3 +14,6 @@ Example 1: Getting Event & show video by event id:
 
 Example 2: Getting Events-list & show video by event object: 
 [VideoActivityWithEventList](app/src/main/java/tv/mycujoo/mlssampleapp/VideoActivity.kt)
+
+Example 3: Using Caster module to support Google Cast: 
+[VideoActivityWithCaster](https://github.com/mycujoo/mls-android-sample-app/blob/master/app/src/main/java/tv/mycujoo/mlssampleapp/VideoActivityWithCaster.kt)
