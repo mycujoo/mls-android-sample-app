@@ -15,6 +15,12 @@
         <activity
             android:name=".VideoActivityWithEventList"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation" />
+        <activity
+            android:name=".VideoActivityWithCast"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation" />
+        <activity
+            android:name=".VideoActivityWithIma"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

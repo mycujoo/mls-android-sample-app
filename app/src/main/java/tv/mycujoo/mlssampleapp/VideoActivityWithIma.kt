@@ -15,12 +15,13 @@ import tv.mycujoo.mls.api.MLSConfiguration
 import tv.mycujoo.mls.api.PlayerEventsListener
 import tv.mycujoo.mls.core.UIEventListener
 import tv.mycujoo.mls.entity.msc.VideoPlayerConfig
+import tv.mycujoo.mls.ima.Ima
 import tv.mycujoo.mls.widgets.MLSPlayerView
 
 /**
  * This sample shows how to display an Event by using the event's id.
  */
-class VideoActivity : AppCompatActivity() {
+class VideoActivityWithIma : AppCompatActivity() {
 
     lateinit var MLS: MLS
     var isFullScreen = false
@@ -78,21 +79,13 @@ class VideoActivity : AppCompatActivity() {
             .setPlayerEventsListener(playerEventsListener)
             .setUIEventListener(uiEventListener)
             .setConfiguration(mlsConfiguration) // customize MLSConfiguration by providing
+            .setIma(Ima("AD_UNIT_HERE"))
             .build()
 
         // use VideoPlayer to play video
         playButton.setOnClickListener {
             MLS.getVideoPlayer().playVideo("EVENT_ID_HERE")
         }
-
-        // use Data-Provider to fetch events
-        val dataProvider = MLS.getDataProvider()
-        dataProvider.fetchEvents(
-            10,
-            fetchEventCallback = { eventList: List<EventEntity>, previousPageToken: String, nextPageToken: String ->
-                // eventList contains all events that matches search criteria
-            })
-
     }
 
 

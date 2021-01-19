@@ -16,7 +16,6 @@ import tv.mycujoo.mls.api.MLS
 import tv.mycujoo.mls.api.MLSBuilder
 import tv.mycujoo.mls.api.MLSConfiguration
 import tv.mycujoo.mls.api.PlayerEventsListener
-import tv.mycujoo.mls.caster.Caster
 import tv.mycujoo.mls.core.UIEventListener
 import tv.mycujoo.mls.entity.msc.VideoPlayerConfig
 import tv.mycujoo.mls.widgets.MLSPlayerView
@@ -24,7 +23,7 @@ import tv.mycujoo.mls.widgets.MLSPlayerView
 /**
  * This sample shows how to use Caster module to support Google Cast feature.
  */
-class VideoActivityWithCaster : AppCompatActivity() {
+class VideoActivityWithCast : AppCompatActivity() {
 
     lateinit var MLS: MLS
     var isFullScreen = false
@@ -71,8 +70,7 @@ class VideoActivityWithCaster : AppCompatActivity() {
             showTimers = true,
             showFullScreenButton = false,
             showLiveViewers = true,
-            showEventInfoButton = true,
-            showCastButton = true
+            showEventInfoButton = true
         )
         val mlsConfiguration =
             MLSConfiguration(seekTolerance = 1000L, videoPlayerConfig = videoPlayerConfig)
@@ -83,7 +81,7 @@ class VideoActivityWithCaster : AppCompatActivity() {
             .setPlayerEventsListener(playerEventsListener)
             .setUIEventListener(uiEventListener)
             .setConfiguration(mlsConfiguration) // customize MLSConfiguration by providing
-            .setCaster(Caster(miniControllerPlaceHolder))
+            .setCast(tv.mycujoo.mls.cast.Cast(miniControllerPlaceHolder))
             .build()
 
         // use VideoPlayer to play video

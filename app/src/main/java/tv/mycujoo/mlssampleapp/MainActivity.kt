@@ -27,6 +27,23 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
+        withCastButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    VideoActivityWithCast::class.java
+                )
+            )
+        }
+
+        withImaButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    VideoActivityWithIma::class.java
+                )
+            )
+        }
 
 
     }

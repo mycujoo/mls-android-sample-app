@@ -81,13 +81,18 @@ class VideoActivityWithEventList : AppCompatActivity() {
     }
 
     override fun onPause() {
-        super.onPause()
         MLS.onPause()
+        super.onPause()
     }
 
     override fun onStop() {
-        super.onStop()
         MLS.onStop()
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        MLS.onDestroy()
+        super.onDestroy()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
