@@ -8,7 +8,7 @@
     android:id="@+id/mainActivityRootLayout"
     tools:context=".VideoActivity">
 
-    <tv.mycujoo.mls.widgets.MLSPlayerView
+    <tv.mycujoo.mcls.widgets.MLSPlayerView
         android:id="@+id/mlsPlayerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

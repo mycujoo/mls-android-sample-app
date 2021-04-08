@@ -12,13 +12,13 @@ import kotlinx.android.synthetic.main.activity_video.mlsPlayerView
 import kotlinx.android.synthetic.main.activity_video.playButton
 import kotlinx.android.synthetic.main.activity_video_with_cast.*
 import tv.mycujoo.domain.entity.EventEntity
-import tv.mycujoo.mls.api.MLS
-import tv.mycujoo.mls.api.MLSBuilder
-import tv.mycujoo.mls.api.MLSConfiguration
-import tv.mycujoo.mls.api.PlayerEventsListener
-import tv.mycujoo.mls.core.UIEventListener
-import tv.mycujoo.mls.entity.msc.VideoPlayerConfig
-import tv.mycujoo.mls.widgets.MLSPlayerView
+import tv.mycujoo.mcls.api.MLS
+import tv.mycujoo.mcls.api.MLSBuilder
+import tv.mycujoo.mcls.api.MLSConfiguration
+import tv.mycujoo.mcls.api.PlayerEventsListener
+import tv.mycujoo.mcls.core.UIEventListener
+import tv.mycujoo.mcls.entity.msc.VideoPlayerConfig
+import tv.mycujoo.mcls.widgets.MLSPlayerView
 
 /**
  * This sample shows how to use Caster module to support Google Cast feature.
@@ -81,7 +81,7 @@ class VideoActivityWithCast : AppCompatActivity() {
             .setPlayerEventsListener(playerEventsListener)
             .setUIEventListener(uiEventListener)
             .setConfiguration(mlsConfiguration) // customize MLSConfiguration by providing
-            .setCast(tv.mycujoo.mls.cast.Cast(miniControllerPlaceHolder))
+            .setCast(tv.mycujoo.mcls.cast.Cast(miniControllerPlaceHolder))
             .build()
 
         // use VideoPlayer to play video

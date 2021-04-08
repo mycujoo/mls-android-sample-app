@@ -1,6 +1,6 @@
 package tv.mycujoo.mlssampleapp
 
-import tv.mycujoo.mls.cast.MLSCastOptionsProviderAbstract
+import tv.mycujoo.mcls.cast.MLSCastOptionsProviderAbstract
 
 class MyOptionProvider : MLSCastOptionsProviderAbstract() {
 }

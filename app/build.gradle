@@ -36,15 +36,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'tv.mycujoo.mls-android:mls:1.2'
-    implementation 'tv.mycujoo.mls-android:cast:1.0.0-alpha02' // optional
-    implementation 'tv.mycujoo.mls-android:ima:1.0.0-alpha02' // optional
+    implementation 'tv.mycujoo.mls:mls:1.2.3-alpha01'
+    implementation 'tv.mycujoo.mls:cast:1.0.0-alpha02' // optional
+    implementation 'tv.mycujoo.mls:ima:1.0.0-alpha02' // optional
 
 
 }

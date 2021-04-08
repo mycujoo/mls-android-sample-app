@@ -9,13 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import kotlinx.android.synthetic.main.activity_video.*
 import tv.mycujoo.domain.entity.EventEntity
-import tv.mycujoo.mls.api.MLS
-import tv.mycujoo.mls.api.MLSBuilder
-import tv.mycujoo.mls.api.MLSConfiguration
-import tv.mycujoo.mls.api.PlayerEventsListener
-import tv.mycujoo.mls.core.UIEventListener
-import tv.mycujoo.mls.entity.msc.VideoPlayerConfig
-import tv.mycujoo.mls.widgets.MLSPlayerView
+import tv.mycujoo.mcls.api.MLS
+import tv.mycujoo.mcls.api.MLSBuilder
+import tv.mycujoo.mcls.api.MLSConfiguration
+import tv.mycujoo.mcls.api.PlayerEventsListener
+import tv.mycujoo.mcls.core.UIEventListener
+import tv.mycujoo.mcls.entity.msc.VideoPlayerConfig
+import tv.mycujoo.mcls.widgets.MLSPlayerView
 
 /**
  * This sample shows how to display an Event by using the event's id.
@@ -65,7 +65,7 @@ class VideoActivity : AppCompatActivity() {
             showBackForwardsButtons = true,
             showSeekBar = true,
             showTimers = true,
-            showFullScreenButton = false,
+            showFullScreenButton = true,
             showLiveViewers = true,
             showEventInfoButton = true
         )
